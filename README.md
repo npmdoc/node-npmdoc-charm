@@ -3,7 +3,7 @@
 
 [![NPM](https://nodei.co/npm/charm.png?downloads=true)](https://www.npmjs.com/package/charm)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-charm/build/screenCapture.buildNpmdoc.browser.%2Fhome%2Ftravis%2Fbuild%2Fnpmdoc%2Fnode-npmdoc-charm%2Ftmp%2Fbuild%2Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-charm/build/apidoc.html)
+[![apidoc](https://npmdoc.github.io/node-npmdoc-charm/build/screenCapture.buildNpmdoc.browser.%252Fhome%252Ftravis%252Fbuild%252Fnpmdoc%252Fnode-npmdoc-charm%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-charm/build/apidoc.html)
 
 ![npmPackageListing](https://npmdoc.github.io/node-npmdoc-charm/build/screenCapture.npmPackageListing.svg)
 
