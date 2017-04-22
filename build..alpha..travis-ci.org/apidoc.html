@@ -63,6 +63,15 @@
 
         <li>
 
+            <a class="apidocElementLiA" href="#apidoc.element.charm.charm">
+            function <span class="apidocSignatureSpan"></span>charm
+            <span class="apidocSignatureSpan">()</span>
+            </a>
+
+        </li>
+
+        <li>
+
             <a class="apidocElementLiA" href="#apidoc.element.charm.Charm">
             function <span class="apidocSignatureSpan">charm.</span>Charm
             <span class="apidocSignatureSpan">()</span>
@@ -328,6 +337,73 @@
 
 <div class="apidocSectionDiv">
 <h1><a href="#apidoc.module.charm" id="apidoc.module.charm">module charm</a></h1>
+
+
+    <h2>
+        <a href="#apidoc.element.charm.charm" id="apidoc.element.charm.charm">
+        function <span class="apidocSignatureSpan"></span>charm
+        <span class="apidocSignatureSpan">()</span>
+        </a>
+    </h2>
+    <ul>
+    <li>description and source-code<pre class="apidocCodePre">charm = function () {
+    var input = null;
+    function setInput (s) {
+        if (input) throw new Error(&#x27;multiple inputs specified&#x27;)
+        else input = s
+    }
+
+    var output = null;
+    function setOutput (s) {
+        if (output) throw new Error(&#x27;multiple outputs specified&#x27;)
+        else output = s
+    }
+
+    for (var i = 0; i &#x3c; arguments.length; i++) {
+        var arg = arguments[i];
+        if (!arg) continue;
+        if (arg.readable) setInput(arg)
+        else if (arg.stdin || arg.input) setInput(arg.stdin || arg.input)
+
+        if (arg.writable) setOutput(arg)
+        else if (arg.stdout || arg.output) setOutput(arg.stdout || arg.output)
+
+    }
+
+    if (input &#x26;&#x26; typeof input.fd === &#x27;number&#x27; &#x26;&#x26; tty.isatty(input.fd)) {
+        if (process.stdin.setRawMode) {
+            process.stdin.setRawMode(true);
+        }
+        else tty.setRawMode(true);
+    }
+
+    var charm = new Charm;
+    if (input) {
+        input.pipe(charm);
+    }
+
+    if (output) {
+        charm.pipe(output);
+    }
+
+    charm.once(&#x27;^C&#x27;, process.exit);
+    charm.once(&#x27;end&#x27;, function () {
+      if (input) {
+          if (typeof input.fd === &#x27;number&#x27; &#x26;&#x26; tty.isatty(input.fd)) {
+            if (process.stdin.setRawMode) {
+                process.stdin.setRawMode(false);
+            }
+            else tty.setRawMode(false);
+          }
+          input.destroy();
+      }
+    });
+
+    return charm;
+}</pre></li>
+    <li>example usage<pre class="apidocCodePre">n/a</pre></li>
+    </ul>
+
 
 
     <h2>
